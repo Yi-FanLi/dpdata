@@ -56,3 +56,23 @@ class ORCASPOutFormat(Format):
             "orig": np.zeros(3),
             "nopbc": True,
         }
+
+@Format.register("orca/inp")
+class ORCAInpFormat(Format):
+    """ORCA input file."""
+
+    def to_system(self, data: dict, file_name: FileType, **kwargs):
+        """Generate ORCA input file.
+
+        Parameters
+        ----------
+        data : dict
+            system data
+        file_name : str
+            file name
+        **kwargs : dict
+            Other parameters to make input files. See :meth:`dpdata.orca.inp.make_orca_input`
+        """
+        text = dpdata.orca.inp.make_orca_input(data, **kwargs)
+        with open_file(file_name, "w") as fp:
+            fp.write(text)
