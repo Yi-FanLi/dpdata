@@ -9,6 +9,7 @@ import dpdata.orca.output
 from dpdata.format import Format
 from dpdata.orca.output import read_orca_sp_output
 from dpdata.unit import EnergyConversion, ForceConversion
+from dpdata.utils import open_file
 
 if TYPE_CHECKING:
     from dpdata.utils import FileType
